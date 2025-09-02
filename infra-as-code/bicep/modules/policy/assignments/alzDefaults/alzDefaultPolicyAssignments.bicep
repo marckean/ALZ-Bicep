@@ -50,9 +50,6 @@ param parPolicyAssignmentSovereigntyConfidential policyAssignmentSovereigntyConf
   parPolicyEffect: 'Deny'
 }
 
-@description('Apply platform policies to Platform group or child groups.')
-param parPlatformMgAlzDefaultsEnable bool = true
-
 @description('Assign policies to Corp & Online Management Groups under Landing Zones.')
 param parLandingZoneChildrenMgAlzDefaultsEnable bool = true
 
@@ -60,7 +57,7 @@ param parLandingZoneChildrenMgAlzDefaultsEnable bool = true
 param parLandingZoneMgConfidentialEnable bool = false
 
 @description('Location of Log Analytics Workspace & Automation Account.')
-param parLogAnalyticsWorkSpaceAndAutomationAccountLocation string = 'eastus'
+param parLogAnalyticsWorkSpaceAndAutomationAccountLocation string = 'australiaeast'
 
 @description('Resource ID of Log Analytics Workspace.')
 param parLogAnalyticsWorkspaceResourceId string = ''
@@ -503,18 +500,18 @@ var varRbacRoleDefinitionIds = {
 
 // Management Groups Variables - Used For Policy Assignments
 var varManagementGroupIds = {
-  intRoot: '${parTopLevelManagementGroupPrefix}${parTopLevelManagementGroupSuffix}'
-  platform: '${parTopLevelManagementGroupPrefix}-platform${parTopLevelManagementGroupSuffix}'
-  platformManagement: parPlatformMgAlzDefaultsEnable ? '${parTopLevelManagementGroupPrefix}-platform-management${parTopLevelManagementGroupSuffix}' : '${parTopLevelManagementGroupPrefix}-platform${parTopLevelManagementGroupSuffix}'
-  platformConnectivity: parPlatformMgAlzDefaultsEnable ? '${parTopLevelManagementGroupPrefix}-platform-connectivity${parTopLevelManagementGroupSuffix}' : '${parTopLevelManagementGroupPrefix}-platform${parTopLevelManagementGroupSuffix}'
-  platformIdentity: parPlatformMgAlzDefaultsEnable ? '${parTopLevelManagementGroupPrefix}-platform-identity${parTopLevelManagementGroupSuffix}' : '${parTopLevelManagementGroupPrefix}-platform${parTopLevelManagementGroupSuffix}'
-  landingZones: '${parTopLevelManagementGroupPrefix}-landingzones${parTopLevelManagementGroupSuffix}'
-  landingZonesCorp: '${parTopLevelManagementGroupPrefix}-landingzones-corp${parTopLevelManagementGroupSuffix}'
-  landingZonesOnline: '${parTopLevelManagementGroupPrefix}-landingzones-online${parTopLevelManagementGroupSuffix}'
+  intRoot: 'Downer'
+  platform: 'Platform'
+  platformManagement: 'Management'
+  platformConnectivity: 'Connectivity'
+  platformIdentity: 'Identity'
+  landingZones: 'LandingZones'
+  landingZonesCorp: 'Corp'
+  landingZonesOnline: 'Online'
   landingZonesConfidentialCorp: '${parTopLevelManagementGroupPrefix}-landingzones-confidential-corp${parTopLevelManagementGroupSuffix}'
   landingZonesConfidentialOnline: '${parTopLevelManagementGroupPrefix}-landingzones-confidential-online${parTopLevelManagementGroupSuffix}'
-  decommissioned: '${parTopLevelManagementGroupPrefix}-decommissioned${parTopLevelManagementGroupSuffix}'
-  sandbox: '${parTopLevelManagementGroupPrefix}-sandbox${parTopLevelManagementGroupSuffix}'
+  decommissioned: 'Decommissioned'
+  sandbox: 'Sandbox'
 }
 
 var varCorpManagementGroupIds = [

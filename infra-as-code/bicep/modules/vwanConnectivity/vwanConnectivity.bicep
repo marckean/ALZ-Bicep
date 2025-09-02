@@ -127,11 +127,11 @@ param parVirtualWanHubDefaultRouteName string = 'default-to-azfw'
 ''')
 param parVirtualWanHubs virtualWanOptionsType = [ {
     parVpnGatewayEnabled: true
-    parExpressRouteGatewayEnabled: true
-    parAzFirewallEnabled: true
+    parExpressRouteGatewayEnabled: false
+    parAzFirewallEnabled: false
     parVirtualHubAddressPrefix: '10.100.0.0/23'
     parHubLocation: parLocation
-    parHubRoutingPreference: 'ExpressRoute'
+    parHubRoutingPreference: 'VpnGateway'
     parVirtualRouterAutoScaleConfiguration: 2
     parVirtualHubRoutingIntentDestinations: []
     parAzFirewallDnsProxyEnabled: true
